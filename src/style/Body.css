@@ -1,0 +1,125 @@
+body{
+    margin: 0;
+}
+
+.body-container {
+  background-color: black;
+  color: white;
+  padding: 1px 95px 95px 95px;
+  text-align: left;
+}
+
+.main-heading {
+  position: sticky;
+  top: 0;
+}
+
+
+.title {
+  font-size: 48px;
+  font-weight: bold;
+}
+
+.highlight {
+  color: #0099ff;
+}
+
+.description {
+  width: 35%;
+  color: rgba(255, 255, 255, 0.696);
+  font-size: 1rem;
+  margin-bottom: 20px;
+}
+
+.case-study {
+  color: #fff;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+.content {
+  padding:  0% 10% 10% 10%;
+}
+
+.project-container {
+  display: flex;
+  flex-direction: column;
+  /* scroll-snap-type: y mandatory; */
+  overflow-y: scroll;
+  height: 60vh;
+  scrollbar-width: none;
+}
+
+.project {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  height: 500px;
+}
+
+.tags {
+  margin-bottom: 10px;
+}
+
+.tag {
+  background: #111;
+  border: 1px solid #0099ff;
+  padding: 5px 10px;
+  border-radius: 20px;
+  display: inline-block;
+  margin-right: 5px;
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+}
+
+.project-image {
+  height: 60vh;
+  left: 5%;
+  width: 44%;
+  top: 200px;
+  position: fixed;
+  mix-blend-mode: multiply;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  opacity: 0;
+  transform: translateY(100px);  
+  transition: transform 0.8s ease-out, opacity 0.6s ease, background-position 0.8s ease;
+}
+
+.section.active .section-img-inner {
+  opacity: 1;
+  background-position: 50% 50%;
+  transform: translateY(0);
+}
+
+.project-details {
+  max-width: 500px;
+}
+
+.project-title {
+  font-size: 36px;
+}
+
+.project-description {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.696);
+}
+
+.section-img {
+  position: relative;
+  display: flex;
+}
+
+.section {
+  display: flex;
+  min-height: 100vh;
+  position: relative;
+  z-index: 2;
+}
+
+.section > * {
+  width: 50%;
+}
+
+
