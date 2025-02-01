@@ -1,3 +1,4 @@
+
 body{
     margin: 0;
 }
@@ -13,7 +14,6 @@ body{
   position: sticky;
   top: 0;
 }
-
 
 .title {
   font-size: 48px;
@@ -44,7 +44,6 @@ body{
 .project-container {
   display: flex;
   flex-direction: column;
-  /* scroll-snap-type: y mandatory; */
   overflow-y: scroll;
   height: 60vh;
   scrollbar-width: none;
@@ -122,4 +121,104 @@ body{
   width: 50%;
 }
 
+@media (max-width: 1024px) {
+  .body-container {
+    padding: 1px 50px 50px 50px;
+  }
 
+  .content {
+    padding: 0% 5% 5% 5%;
+  }
+
+  .project-image {
+    width: 50%;
+    left: 2%;
+  }
+
+  .project-details {
+    max-width: 45%;
+  }
+}
+
+@media (max-width: 768px) {
+  .body-container {
+    padding: 1px 20px 20px 20px;
+  }
+
+  .content {
+    padding: 0% 2% 2% 2%;
+  }
+
+  .project-image {
+    width: 60%;
+    left: 0;
+  }
+
+  .project-details {
+    max-width: 35%;
+  }
+
+  .title {
+    font-size: 36px;
+  }
+
+  .description {
+    width: 50%;
+  }
+
+  .project-title {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 480px) {
+  .body-container {
+    padding: 1px 10px 10px 10px;
+  }
+
+  .content {
+    padding: 0% 1% 1% 1%;
+  }
+
+  .project-image {
+    width: 80%;
+    left: 0;
+    top: 150px;
+  }
+
+  .project-details {
+    max-width: 100%;
+    margin-top: 60vh;
+  }
+
+  .title {
+    font-size: 28px;
+  }
+
+  .description {
+    width: 80%;
+  }
+
+  .project-title {
+    font-size: 24px;
+  }
+
+  .section {
+    flex-direction: column;
+  }
+
+  .section > * {
+    width: 100%;
+  }
+
+  .project-image {
+    position: relative;
+    top: 0;
+    height: 40vh;
+    width: 100%;
+  }
+
+  .project-details {
+    margin-top: 20px;
+  }
+}
