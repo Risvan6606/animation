@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import "../style/Body.css";
 
 function Body() {
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [scrollPercentage, setScrollPercentage] = useState(0);
+
   const sections = [
     {
       tags: [
@@ -30,61 +31,15 @@ function Body() {
       description:
         "Mobilleo is a SaaS solution making it easy for organisations to manage global business travel for their employees. The team at Mobilleo approached Phunk to provide a range of design and illustration services, building on their existing brand, for use across their website and app.",
     },
-
-    {
-      tags: [
-        "Splash Screens",
-        "Illustrations",
-        "Graphic Design",
-        "Lottie Animations",
-      ],
-      heading: "Mannson Freight",
-      image:
-        "https://cdn.prod.website-files.com/6501f1891917bde75ab542ee/65411d16c21a037f3b0a622a_Mannson%20Thumbnail.webp",
-      description:
-        "Mobilleo is a SaaS solution making it easy for organisations to manage global business travel for their employees. The team at Mobilleo approached Phunk to provide a range of design and illustration services, building on their existing brand, for use across their website and app.",
-    },
-    {
-      tags: [
-        "Splash Screens",
-        "Illustrations",
-        "Graphic Design",
-        "Lottie Animations",
-      ],
-      heading: "BOX iQ",
-      image:
-        "https://cdn.prod.website-files.com/6501f1891917bde75ab542ee/65411d311c63649d5c6843d5_Boxiq%20Thumbnail.webp",
-      description:
-        "Mobilleo is a SaaS solution making it easy for organisations to manage global business travel for their employees. The team at Mobilleo approached Phunk to provide a range of design and illustration services, building on their existing brand, for use across their website and app.",
-    },
-    {
-      tags: [
-        "Splash Screens",
-        "Illustrations",
-        "Graphic Design",
-        "Lottie Animations",
-      ],
-      heading: "The Honest Watch Dealer",
-      image:
-        "https://cdn.prod.website-files.com/6501f1891917bde75ab542ee/65411d3f05b871765a7cac0c_Honest%20Watch%20Thumbnail.webp",
-      description:
-        "Mobilleo is a SaaS solution making it easy for organisations to manage global business travel for their employees. The team at Mobilleo approached Phunk to provide a range of design and illustration services, building on their existing brand, for use across their website and app.",
-    },
   ];
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPosition = window.scrollY + window.innerHeight / 3;
-      sections.forEach((_, index) => {
-        const sectionElement = document.getElementById(`section-${index}`);
-        if (
-          sectionElement.offsetTop <= scrollPosition &&
-          sectionElement.offsetTop + sectionElement.clientHeight >
-            scrollPosition
-        ) {
-          setActiveIndex(index);
-        }
-      });
+      const scrollTop = window.scrollY;
+      const documentHeight =
+        document.documentElement.scrollHeight - window.innerHeight;
+      const scrollProgress = (scrollTop / documentHeight) * 100;
+      setScrollPercentage(scrollProgress);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -105,15 +60,23 @@ function Body() {
           </p>
         </div>
         {sections.map((item, index) => (
-          <div
-            className={`section ${activeIndex === index ? "active" : ""}`}
-            key={index}
-            id={`section-${index}`}
-          >
+          <div className="section" key={index} id={`section-${index}`}>
             <div className="section-img">
               <div
-                className="project-image section-img-inner"
-                style={{ backgroundImage: `url(${item.image})` }}
+                className="project-image old-image"
+                style={{
+                  backgroundImage: `url(${
+                    index > 0 ? sections[index - 1].image : item.image
+                  })`,
+                  clipPath: `inset(0 0 ${scrollPercentage}% 0)`, 
+                }}
+              ></div>
+              <div
+                className="project-image new-image"
+                style={{
+                  backgroundImage: `url(${item.image})`,
+                  clipPath: `inset(${100 - scrollPercentage}% 0 0 0)`,
+                }}
               ></div>
             </div>
             <div className="project-details">
